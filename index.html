@@ -1,0 +1,455 @@
+<style>
+.jcvt *{box-sizing:border-box;margin:0;padding:0}
+.jcvt{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f7f5;color:#1a1a1a;padding:2rem 1rem}
+.jcvt-inner{max-width:620px;margin:0 auto}
+.jcvt-hdr{text-align:center;margin-bottom:2rem}
+.jcvt-brand{display:inline-flex;align-items:center;gap:7px;margin-bottom:12px}
+.jcvt-pip{width:9px;height:9px;border-radius:50%;background:#1D9E75}
+.jcvt-bname{font-size:13px;font-weight:600;color:#444;letter-spacing:.02em;text-transform:uppercase}
+.jcvt-hdr h1{font-size:26px;font-weight:600;color:#111;margin-bottom:6px;line-height:1.25}
+.jcvt-hdr p{font-size:14px;color:#666;line-height:1.5}
+.jcvt-steps{display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem}
+.jcvt-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid #d0d0cc;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#999;background:#fff;flex-shrink:0}
+.jcvt-dot.active{background:#1D9E75;border-color:#1D9E75;color:#fff}
+.jcvt-dot.done{background:#E1F5EE;border-color:#5DCAA5;color:#0F6E56}
+.jcvt-line{flex:1;height:1.5px;background:#d0d0cc;max-width:64px}
+.jcvt-line.done{background:#5DCAA5}
+.jcvt-card{background:#fff;border:1px solid #e5e5e2;border-radius:14px;padding:1.75rem;margin-bottom:0}
+.jcvt-slbl{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1.25rem}
+.jcvt-fl{display:block;font-size:13px;font-weight:500;color:#555;margin-bottom:5px;margin-top:1.125rem}
+.jcvt-fl.first{margin-top:0}
+.jcvt-hint{font-size:12px;color:#999;margin-top:2px;margin-bottom:5px;line-height:1.4}
+.jcvt select,.jcvt input[type=text],.jcvt input[type=email],.jcvt input[type=tel]{width:100%;font-size:15px;padding:9px 12px;border:1px solid #d0d0cc;border-radius:8px;background:#fff;color:#1a1a1a;outline:none;font-family:inherit}
+.jcvt select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;-webkit-appearance:none;appearance:none}
+.jcvt select:focus,.jcvt input:focus{border-color:#1D9E75;box-shadow:0 0 0 3px rgba(29,158,117,.12)}
+.jcvt-srow{display:flex;align-items:center;gap:12px;margin-top:6px}
+.jcvt-srow input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:#e5e5e2;outline:none;cursor:pointer;border:none;padding:0}
+.jcvt-srow input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#1D9E75;cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px #1D9E75}
+.jcvt-srow input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#1D9E75;cursor:pointer;border:2px solid #fff}
+.jcvt-sval{font-size:14px;font-weight:600;min-width:68px;text-align:right;color:#111}
+.jcvt-btn{width:100%;margin-top:1.375rem;padding:12px;background:#1D9E75;color:#fff;border:none;border-radius:9px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}
+.jcvt-btn:hover{background:#0F6E56}
+.jcvt-btn:disabled{background:#9FE1CB;cursor:not-allowed}
+.jcvt-btn2{width:100%;margin-top:.625rem;padding:10px;background:transparent;color:#777;border:1px solid #d0d0cc;border-radius:9px;font-size:14px;cursor:pointer;font-family:inherit}
+.jcvt-btn2:hover{background:#f7f7f5}
+.jcvt-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+.jcvt-mc{background:#f7f7f5;border-radius:9px;padding:.875rem 1rem;text-align:center}
+.jcvt-mlbl{font-size:11px;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.jcvt-mval{font-size:20px;font-weight:700;color:#111}
+.jcvt-mval.g{color:#0F6E56}
+.jcvt-rv{margin:0 0 1.25rem}
+.jcvt-rvlbls{display:flex;justify-content:space-between;font-size:12px;color:#666;margin-bottom:6px}
+.jcvt-rvlbls .mid{font-weight:600;color:#111}
+.jcvt-rvtrack{background:#E1F5EE;border-radius:4px;height:10px;position:relative}
+.jcvt-rvmarker{position:absolute;top:-3px;width:4px;height:16px;background:#1D9E75;border-radius:2px;transform:translateX(-50%)}
+.jcvt-rvfoot{display:flex;justify-content:space-between;font-size:11px;color:#aaa;margin-top:5px}
+.jcvt-sclbl{font-size:13px;font-weight:600;color:#333;margin-bottom:10px}
+.jcvt-scrows{display:flex;flex-direction:column;gap:7px;margin-bottom:1.25rem}
+.jcvt-sci{display:flex;align-items:center;gap:10px}
+.jcvt-scl{flex:0 0 140px;font-size:13px;color:#555}
+.jcvt-scbar{flex:1;background:#eeede9;border-radius:3px;height:5px;overflow:hidden}
+.jcvt-scfill{height:100%;border-radius:3px}
+.jcvt-scpill{font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+.pg{background:#E1F5EE;color:#085041}
+.pa{background:#FAEEDA;color:#633806}
+.pr{background:#FCEBEB;color:#791F1F}
+.jcvt-ib{background:#f7f7f5;border-left:3px solid #5DCAA5;border-radius:0 9px 9px 0;padding:1rem 1.125rem;margin-bottom:1.25rem;font-size:13px;color:#555;line-height:1.65}
+.jcvt-ib strong{font-weight:600;color:#222}
+.jcvt-bstrip{border:1px solid #5DCAA5;border-radius:12px;background:#E1F5EE;padding:1.25rem 1.375rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:.75rem}
+.jcvt-bicon{width:42px;height:42px;border-radius:50%;background:#1D9E75;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.jcvt-bbody h3{font-size:15px;font-weight:600;color:#085041;margin-bottom:5px}
+.jcvt-bbody p{font-size:13px;color:#0F6E56;line-height:1.55;margin-bottom:.875rem}
+.jcvt-bacts{display:flex;gap:8px;flex-wrap:wrap}
+.jcvt-bbtn{padding:9px 16px;background:#1D9E75;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:5px}
+.jcvt-bbtn:hover{background:#0F6E56}
+.jcvt-cbtn{padding:9px 16px;background:transparent;color:#085041;border:1px solid #5DCAA5;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.jcvt-cbtn:hover{background:rgba(29,158,117,.1)}
+.jcvt-bform{border:1px solid #e5e5e2;border-radius:12px;padding:1.375rem;margin-bottom:.75rem;background:#fff}
+.jcvt-bftitle{font-size:14px;font-weight:600;color:#222;margin-bottom:1rem}
+.jcvt-disc{font-size:11px;color:#aaa;line-height:1.5;text-align:center;margin-top:.875rem;display:flex;align-items:center;justify-content:center;gap:4px}
+.jcvt-agree{display:flex;align-items:flex-start;gap:10px;background:#FFF8EC;border:1px solid #F0C060;border-radius:9px;padding:1rem;margin-top:1.375rem}
+.jcvt-agree input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:#1D9E75;cursor:pointer}
+.jcvt-agree label{font-size:12px;color:#5a3e00;line-height:1.55;cursor:pointer}
+.jcvt-agree label strong{font-weight:600;color:#3d2900}
+.jcvt-warn-banner{background:#FFF3F3;border:1px solid #E8AAAA;border-radius:9px;padding:.875rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:9px}
+.jcvt-warn-banner svg{flex-shrink:0;color:#c0392b;margin-top:1px}
+.jcvt-warn-banner p{font-size:12px;color:#7a1a1a;line-height:1.55;font-weight:600;letter-spacing:.01em}
+.jcvt-cicon{width:54px;height:54px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#0F6E56}
+.jcvt-conf h2{font-size:20px;font-weight:600;color:#111;margin-bottom:6px}
+.jcvt-conf p{font-size:14px;color:#666;line-height:1.55;margin-bottom:1.25rem}
+.jcvt-conf a{color:#1D9E75;text-decoration:none;font-weight:500}
+.jcvt-fp{font-size:11px;color:#bbb;margin-top:1.25rem;line-height:1.5}
+@media(max-width:480px){.jcvt-card{padding:1.25rem}.jcvt-hdr h1{font-size:22px}.jcvt-scl{flex:0 0 110px;font-size:12px}.jcvt-bstrip{flex-direction:column;gap:.75rem}}
+</style>
+
+<div class="jcvt">
+<div class="jcvt-inner">
+
+  <div class="jcvt-hdr">
+    <div class="jcvt-brand"><div class="jcvt-pip"></div><span class="jcvt-bname">JC Business Sales</span></div>
+    <h1>SME Valuation Range Finder</h1>
+    <p>A free broker simulation framework to help you prepare for a valuation conversation.<br><strong style="color:#c0392b;font-size:12px">&#9888; Indicative estimates only &mdash; not a formal valuation or financial advice.</strong></p>
+  </div>
+
+  <div class="jcvt-steps">
+    <div class="jcvt-dot active" id="jd1">1</div><div class="jcvt-line" id="jl1"></div>
+    <div class="jcvt-dot" id="jd2">2</div><div class="jcvt-line" id="jl2"></div>
+    <div class="jcvt-dot" id="jd3">3</div><div class="jcvt-line" id="jl3"></div>
+    <div class="jcvt-dot" id="jd4">4</div>
+  </div>
+
+  <!-- Step 1 -->
+  <div id="js1" class="jcvt-card">
+    <p class="jcvt-slbl">Step 1 of 3 — Your business</p>
+    <label class="jcvt-fl first" for="j_sector">What sector are you in?</label>
+    <select id="j_sector">
+      <option value="">— select —</option>
+      <option value="trades">Trades &amp; construction</option>
+      <option value="retail">Retail (product-based)</option>
+      <option value="food">Food &amp; hospitality</option>
+      <option value="professional">Professional services (accountancy, legal, consulting)</option>
+      <option value="healthcare">Healthcare &amp; wellbeing</option>
+      <option value="tech">Technology &amp; software</option>
+      <option value="manufacturing">Manufacturing &amp; wholesale</option>
+      <option value="transport">Transport &amp; logistics</option>
+      <option value="childcare">Childcare &amp; education</option>
+      <option value="other">Other service business</option>
+    </select>
+    <label class="jcvt-fl" for="j_turnover">Annual turnover (&euro;)</label>
+    <div class="jcvt-srow"><input type="range" id="j_turnover" min="100000" max="5000000" value="600000" step="50000"><span class="jcvt-sval" id="j_tvout">&euro;600k</span></div>
+    <label class="jcvt-fl" for="j_profit">Adjusted net profit / EBITDA (&euro;)</label>
+    <p class="jcvt-hint">Profit before your own salary, interest, tax &amp; depreciation — add back personal expenses run through the business</p>
+    <div class="jcvt-srow"><input type="range" id="j_profit" min="20000" max="800000" value="120000" step="5000"><span class="jcvt-sval" id="j_prout">&euro;120k</span></div>
+    <button class="jcvt-btn" onclick="jcvt_to(2)">Continue &rarr;</button>
+  </div>
+
+  <!-- Step 2 -->
+  <div id="js2" class="jcvt-card" style="display:none">
+    <p class="jcvt-slbl">Step 2 of 3 — Value drivers</p>
+    <label class="jcvt-fl first" for="j_growth">How has turnover trended over the last 3 years?</label>
+    <select id="j_growth">
+      <option value="strong">Growing strongly (10%+ per year)</option>
+      <option value="steady">Growing steadily (up to 10%)</option>
+      <option value="flat">Broadly flat</option>
+      <option value="decline">Declining</option>
+    </select>
+    <label class="jcvt-fl" for="j_owner">How owner-dependent is the business?</label>
+    <select id="j_owner">
+      <option value="low">Runs well without me — management team in place</option>
+      <option value="mid">I'm involved in key decisions but not day-to-day operations</option>
+      <option value="high">I'm central to day-to-day operations</option>
+      <option value="critical">Business is almost entirely built around me personally</option>
+    </select>
+    <label class="jcvt-fl" for="j_recurring">How strong is your customer / revenue base?</label>
+    <select id="j_recurring">
+      <option value="contracted">Contracted or subscription revenue</option>
+      <option value="repeat">Strong repeat customer base</option>
+      <option value="mix">Mix of repeat and new customers</option>
+      <option value="oneoff">Mainly once-off or project-based work</option>
+    </select>
+    <button class="jcvt-btn" style="margin-top:1.375rem" onclick="jcvt_to(3)">Continue &rarr;</button>
+    <button class="jcvt-btn2" onclick="jcvt_to(1)">&larr; Back</button>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="js3" class="jcvt-card" style="display:none">
+    <p class="jcvt-slbl">Step 3 of 3 — Risk factors</p>
+    <label class="jcvt-fl first" for="j_accounts">How would you describe your accounts / financial records?</label>
+    <select id="j_accounts">
+      <option value="clean">Clean, professionally prepared accounts — easy to verify</option>
+      <option value="ok">Accounts are in order but not always professionally audited</option>
+      <option value="mixed">Mixed — some personal and business expenses overlap</option>
+      <option value="poor">Basic records only — hard to verify all figures</option>
+    </select>
+    <label class="jcvt-fl" for="j_lease">Property / lease situation</label>
+    <select id="j_lease">
+      <option value="own">Business owns its property</option>
+      <option value="long">Long lease in place (5+ years remaining)</option>
+      <option value="short">Short lease (under 5 years, renewal uncertain)</option>
+      <option value="none">No fixed premises needed — fully mobile or online</option>
+      <option value="na">Lease not relevant to this type of business</option>
+    </select>
+    <label class="jcvt-fl" for="j_years">Years in business</label>
+    <div class="jcvt-srow"><input type="range" id="j_years" min="1" max="40" value="9" step="1"><span class="jcvt-sval" id="j_yrout">9 years</span></div>
+    <div class="jcvt-agree">
+      <input type="checkbox" id="j_agree" onchange="jcvt_toggleagreebtn()">
+      <label for="j_agree"><strong>I understand and agree:</strong> This is a free automated simulation based on unverified self-reported inputs. It does not constitute financial advice, a formal business valuation, or a certified report, and cannot be used to secure loans, support legal proceedings, or finalise a business sale under Irish law. A qualified broker assessment is required for those purposes.</label>
+    </div>
+    <button class="jcvt-btn" id="j_showbtn" style="margin-top:1rem;opacity:.45;cursor:not-allowed" onclick="jcvt_showresults()" disabled>Show my indicative range &rarr;</button>
+    <button class="jcvt-btn2" onclick="jcvt_to(2)">&larr; Back</button>
+  </div>
+
+  <!-- Step 4 — Results -->
+  <div id="js4" class="jcvt-card" style="display:none">
+    <p class="jcvt-slbl">Your indicative valuation</p>
+
+    <div class="jcvt-warn-banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p>UNVERIFIED INDICATIVE ESTIMATE ONLY &mdash; NOT AN OFFICIAL VALUATION REPORT. Based on self-reported unaudited inputs. Cannot be used to secure finance, support legal proceedings, or finalise a business sale.</p>
+    </div>
+    <div class="jcvt-grid2">
+      <div class="jcvt-mc"><div class="jcvt-mlbl">Indicative range</div><div class="jcvt-mval g" id="j_range">—</div></div>
+      <div class="jcvt-mc"><div class="jcvt-mlbl">Profit multiple</div><div class="jcvt-mval" id="j_mult">—</div></div>
+    </div>
+    <div class="jcvt-rv">
+      <div class="jcvt-rvlbls"><span id="j_rlow">—</span><span class="mid" id="j_rmid">—</span><span id="j_rhigh">—</span></div>
+      <div class="jcvt-rvtrack"><div class="jcvt-rvmarker" id="j_marker" style="left:50%"></div></div>
+      <div class="jcvt-rvfoot"><span>Conservative</span><span>Mid-point estimate</span><span>Optimistic</span></div>
+    </div>
+    <p class="jcvt-sclbl">Value driver scorecard</p>
+    <div class="jcvt-scrows" id="j_scores"></div>
+    <div class="jcvt-ib" id="j_insight"></div>
+
+    <div class="jcvt-bstrip">
+      <div class="jcvt-bicon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="jcvt-bbody">
+        <h3>Want a more accurate confidential view?</h3>
+        <p>Book an appointment with us and we can give you a confidential preliminary broker opinion before deciding any of your next business exit moves.</p>
+        <div class="jcvt-bacts">
+          <button class="jcvt-bbtn" onclick="jcvt_toggleform()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book an appointment
+          </button>
+          <a href="tel:+353879879186" class="jcvt-cbtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call 087 987 9186
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="jcvt-bform" id="j_bform" style="display:none">
+      <p class="jcvt-bftitle">Your details — we'll confirm a time that suits you</p>
+      <label class="jcvt-fl first" for="j_name">Your name</label>
+      <input type="text" id="j_name" placeholder="e.g. Se&aacute;n Murphy" autocomplete="name">
+      <label class="jcvt-fl" for="j_email">Email address</label>
+      <input type="email" id="j_email" placeholder="sean@yourbusiness.ie" autocomplete="email">
+      <label class="jcvt-fl" for="j_phone">Phone number</label>
+      <input type="tel" id="j_phone" placeholder="087 xxx xxxx" autocomplete="tel">
+      <label class="jcvt-fl" for="j_time">Preferred time to meet</label>
+      <select id="j_time">
+        <option value="">— select preference —</option>
+        <option value="morning">Morning (9am–12pm)</option>
+        <option value="afternoon">Afternoon (12pm–5pm)</option>
+        <option value="flexible">Flexible — anytime suits</option>
+        <option value="virtual">Virtual / phone call preferred</option>
+      </select>
+      <button class="jcvt-btn" id="j_submitbtn" onclick="jcvt_submit()">Request appointment &rarr;</button>
+      <p class="jcvt-disc">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        100% confidential. No obligation. We never share your details.
+      </p>
+    </div>
+
+    <button class="jcvt-btn2" onclick="jcvt_to(1)">&larr; Start again</button>
+  </div>
+
+  <!-- Step 5 — Confirmation -->
+  <div id="js5" class="jcvt-card" style="display:none">
+    <div class="jcvt-conf">
+      <div class="jcvt-cicon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Thanks, <span id="j_confname">there</span>.</h2>
+      <p>James will be in touch shortly to confirm your appointment — free, confidential, and no obligation.</p>
+      <div class="jcvt-mc" style="margin-bottom:1.375rem"><div class="jcvt-mlbl">Your indicative range</div><div class="jcvt-mval g" id="j_confrange">—</div></div>
+      <p>Read the <a href="https://www.jcbizsales.ie/selling-a-business-faq" target="_blank" rel="noopener">Selling a Business FAQ</a> or call James on <a href="tel:+353879879186">087 987 9186</a>.</p>
+      <p class="jcvt-fp">UNVERIFIED INDICATIVE ESTIMATE ONLY &mdash; NOT AN OFFICIAL VALUATION REPORT. This simulation is based on self-reported unaudited inputs and does not constitute financial advice, a certified valuation, or a formal broker opinion. It cannot be used to secure loans, support legal proceedings, or finalise a business sale under Irish law. A qualified broker assessment is required for all such purposes.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+var jcvt_sectors={trades:2.8,retail:2.0,food:1.7,professional:3.2,healthcare:3.6,tech:4.5,manufacturing:3.0,transport:2.4,childcare:3.8,other:2.6};
+var jcvt_data={};
+
+function jcvt_fmt(v){
+  if(v>=1000000) return '\u20ac'+(v/1000000).toFixed(2).replace(/\.?0+$/,'')+'m';
+  return '\u20ac'+Math.round(v/1000)+'k';
+}
+
+function jcvt_showstep(n){
+  for(var i=1;i<=5;i++){
+    var s=document.getElementById('js'+i);
+    if(s) s.style.display=(i===n)?'block':'none';
+  }
+  for(var i=1;i<=4;i++){
+    var d=document.getElementById('jd'+i);
+    var l=document.getElementById('jl'+i);
+    if(d){
+      d.className='jcvt-dot';
+      if(i<n) d.className='jcvt-dot done';
+      else if(i===n) d.className='jcvt-dot active';
+    }
+    if(l) l.className='jcvt-line'+(i<n?' done':'');
+  }
+  var el=document.querySelector('.jcvt');
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function jcvt_to(n){
+  if(n===2 && !document.getElementById('j_sector').value){
+    document.getElementById('j_sector').focus(); return;
+  }
+  jcvt_showstep(n);
+}
+
+function jcvt_toggleform(){
+  var f=document.getElementById('j_bform');
+  f.style.display=(f.style.display==='none')?'block':'none';
+  if(f.style.display==='block') document.getElementById('j_name').focus();
+}
+
+function jcvt_toggleagreebtn(){
+  var cb=document.getElementById('j_agree');
+  var btn=document.getElementById('j_showbtn');
+  if(cb.checked){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';}
+  else{btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
+}
+
+function jcvt_calc(){
+  var sector=document.getElementById('j_sector').value||'other';
+  var turnover=parseInt(document.getElementById('j_turnover').value);
+  var profit=parseInt(document.getElementById('j_profit').value);
+  var growth=document.getElementById('j_growth').value;
+  var owner=document.getElementById('j_owner').value;
+  var recurring=document.getElementById('j_recurring').value;
+  var accounts=document.getElementById('j_accounts').value;
+  var lease=document.getElementById('j_lease').value;
+  var years=parseInt(document.getElementById('j_years').value);
+  var mult=jcvt_sectors[sector]||2.6;
+  var adj=0;
+  if(growth==='strong') adj+=0.5; else if(growth==='steady') adj+=0.2; else if(growth==='decline') adj-=0.5;
+  if(owner==='low') adj+=0.4; else if(owner==='mid') adj+=0.1; else if(owner==='high') adj-=0.3; else if(owner==='critical') adj-=0.65;
+  if(recurring==='contracted') adj+=0.4; else if(recurring==='repeat') adj+=0.2; else if(recurring==='oneoff') adj-=0.25;
+  if(accounts==='clean') adj+=0.15; else if(accounts==='mixed') adj-=0.2; else if(accounts==='poor') adj-=0.4;
+  if(lease==='own') adj+=0.2; else if(lease==='long') adj+=0.1; else if(lease==='short') adj-=0.35;
+  if(years>=15) adj+=0.2; else if(years>=8) adj+=0.1; else if(years<3) adj-=0.15;
+  var fm=Math.max(1.0,mult+adj);
+  var margin=profit/turnover;
+  var mid=profit*fm;
+  var low=mid*(margin<0.12?0.68:0.72);
+  var high=mid*(growth==='strong'?1.35:1.22);
+  jcvt_data={mult:fm,mid:mid,low:low,high:high,profit:profit,turnover:turnover,growth:growth,owner:owner,recurring:recurring,accounts:accounts,lease:lease,years:years,sector:sector,margin:margin};
+}
+
+function jcvt_showresults(){
+  jcvt_calc();
+  var d=jcvt_data;
+  var low5=Math.round(d.low/5000)*5000;
+  var mid5=Math.round(d.mid/5000)*5000;
+  var high5=Math.round(d.high/5000)*5000;
+  document.getElementById('j_range').textContent=jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5);
+  document.getElementById('j_mult').textContent=d.mult.toFixed(1)+'x profit';
+  document.getElementById('j_rlow').textContent=jcvt_fmt(low5);
+  document.getElementById('j_rmid').textContent=jcvt_fmt(mid5);
+  document.getElementById('j_rhigh').textContent=jcvt_fmt(high5);
+  var pct=Math.round((d.mid-d.low)/(d.high-d.low)*100);
+  pct=Math.max(10,Math.min(90,pct));
+  document.getElementById('j_marker').style.left=pct+'%';
+  var scores=[
+    {l:'Growth trend',s:d.growth==='strong'?5:d.growth==='steady'?4:d.growth==='flat'?3:1,p:d.growth==='decline'?'r':d.growth==='flat'?'a':'g'},
+    {l:'Owner dependency',s:d.owner==='low'?5:d.owner==='mid'?4:d.owner==='high'?2:1,p:(d.owner==='critical'||d.owner==='high')?'r':d.owner==='mid'?'a':'g'},
+    {l:'Revenue quality',s:d.recurring==='contracted'?5:d.recurring==='repeat'?4:d.recurring==='mix'?3:2,p:d.recurring==='oneoff'?'a':'g'},
+    {l:'Accounts quality',s:d.accounts==='clean'?5:d.accounts==='ok'?4:d.accounts==='mixed'?2:1,p:d.accounts==='poor'?'r':d.accounts==='mixed'?'a':'g'},
+    {l:'Lease / premises',s:d.lease==='own'?5:d.lease==='long'?4:(d.lease==='none'||d.lease==='na')?4:1,p:d.lease==='short'?'r':'g'},
+    {l:'Track record',s:d.years>=15?5:d.years>=8?4:d.years>=4?3:2,p:d.years<3?'a':'g'}
+  ];
+  var pc={g:'#1D9E75',a:'#EF9F27',r:'#E24B4A'};
+  var pt={g:'Positive',a:'Watch',r:'Risk'};
+  var pc2={g:'pg',a:'pa',r:'pr'};
+  var html='';
+  for(var i=0;i<scores.length;i++){
+    var sc=scores[i];
+    html+='<div class="jcvt-sci"><span class="jcvt-scl">'+sc.l+'</span><div class="jcvt-scbar"><div class="jcvt-scfill" style="width:'+(sc.s*20)+'%;background:'+pc[sc.p]+'"></div></div><span class="jcvt-scpill '+pc2[sc.p]+'">'+pt[sc.p]+'</span></div>';
+  }
+  document.getElementById('j_scores').innerHTML=html;
+  var issues=[],pos=[];
+  if(d.owner==='critical'||d.owner==='high') issues.push('owner dependency is the single biggest value reducer \u2014 buyers need to see a business that can run without you');
+  if(d.accounts==='poor'||d.accounts==='mixed') issues.push('unclean accounts raise buyer concerns and reduce verifiable profit \u2014 clean records can meaningfully increase your sale price');
+  if(d.lease==='short') issues.push('a short or uncertain lease significantly reduces buyer appetite \u2014 securing tenure before going to market is important');
+  if(d.growth==='decline') issues.push('declining turnover narrows the buyer pool and compresses multiples \u2014 stabilising before sale is advisable');
+  if(d.recurring==='contracted'||d.recurring==='repeat') pos.push('strong recurring revenue');
+  if(d.owner==='low') pos.push('low owner-dependency');
+  if(d.growth==='strong') pos.push('strong growth trajectory');
+  if(d.accounts==='clean') pos.push('clean verified accounts');
+  var txt='';
+  if(pos.length) txt+='<strong>Strengths:</strong> '+pos.join(', ')+'. ';
+  if(issues.length){txt+='<strong>To maximise value:</strong> '+issues[0].charAt(0).toUpperCase()+issues[0].slice(1)+'.';if(issues.length>1) txt+=' Also worth noting: '+issues.slice(1).map(function(s){return s.charAt(0).toUpperCase()+s.slice(1);}).join('; ')+'.';}
+  if(!txt) txt='Your business scores well across most value drivers. A proper broker-led valuation will refine this range based on verified financials and current buyer demand in Ireland.';
+  document.getElementById('j_insight').innerHTML='<p>'+txt+'</p>';
+  jcvt_showstep(4);
+}
+
+function jcvt_submit(){
+  var name=document.getElementById('j_name').value.trim();
+  var email=document.getElementById('j_email').value.trim();
+  var phone=document.getElementById('j_phone').value.trim();
+  var time=document.getElementById('j_time').value;
+  if(!name){document.getElementById('j_name').focus();return;}
+  if(!email||email.indexOf('@')<0){document.getElementById('j_email').focus();return;}
+  if(!phone){document.getElementById('j_phone').focus();return;}
+  var d=jcvt_data;
+  var low5=Math.round((d.low||0)/5000)*5000;
+  var high5=Math.round((d.high||0)/5000)*5000;
+  var mid5=Math.round((d.mid||0)/5000)*5000;
+  var tl={morning:'Morning (9am\u201312pm)',afternoon:'Afternoon (12pm\u20135pm)',flexible:'Flexible \u2014 anytime suits',virtual:'Virtual / phone call preferred'};
+  var sl={trades:'Trades & construction',retail:'Retail',food:'Food & hospitality',professional:'Professional services',healthcare:'Healthcare & wellbeing',tech:'Technology & software',manufacturing:'Manufacturing & wholesale',transport:'Transport & logistics',childcare:'Childcare & education',other:'Other service business'};
+  var gl={strong:'Growing strongly (10%+ p/a)',steady:'Growing steadily (up to 10%)',flat:'Broadly flat',decline:'Declining'};
+  var ol={low:'Low \u2014 runs without owner',mid:'Moderate \u2014 owner in key decisions',high:'High \u2014 owner central to operations',critical:'Critical \u2014 built around owner personally'};
+  var rl={contracted:'Contracted / subscription',repeat:'Strong repeat customer base',mix:'Mix of repeat & new',oneoff:'Mainly once-off / project work'};
+  var al={clean:'Clean professional accounts',ok:'In order, not always audited',mixed:'Mixed personal/business expenses',poor:'Basic records only'};
+  var ll={own:'Business owns property',long:'Long lease (5+ years)',short:'Short lease (under 5 years)',none:'No fixed premises',na:'Not applicable'};
+  var btn=document.getElementById('j_submitbtn');
+  btn.disabled=true;
+  btn.textContent='Sending\u2026';
+  fetch('https://formspree.io/f/mkoaykly',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      _subject:'[New Lead] Valuation request from '+name+' \u2014 '+jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5),
+      _replyto:email,
+      name:name,
+      email:email,
+      phone:phone,
+      preferred_time:tl[time]||time,
+      valuation_range:jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5),
+      mid_point:jcvt_fmt(mid5),
+      profit_multiple:d.mult?d.mult.toFixed(1)+'x':'--',
+      sector:sl[d.sector]||d.sector,
+      annual_turnover:d.turnover?jcvt_fmt(d.turnover):'--',
+      adjusted_profit:d.profit?jcvt_fmt(d.profit):'--',
+      growth_trend:gl[d.growth]||d.growth,
+      owner_dependency:ol[d.owner]||d.owner,
+      revenue_base:rl[d.recurring]||d.recurring,
+      accounts_quality:al[d.accounts]||d.accounts,
+      lease_situation:ll[d.lease]||d.lease,
+      years_trading:d.years||'--'
+    })
+  })
+  .then(function(res){
+    if(res.ok){
+      document.getElementById('j_confname').textContent=name.split(' ')[0];
+      document.getElementById('j_confrange').textContent=jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5);
+      jcvt_showstep(5);
+    } else {
+      btn.disabled=false;
+      btn.textContent='Request appointment \u2192';
+      alert('Something went wrong \u2014 please call James on 087 987 9186 or email jcollins@tworld.com');
+    }
+  })
+  .catch(function(){
+    btn.disabled=false;
+    btn.textContent='Request appointment \u2192';
+    alert('Could not send \u2014 please call James on 087 987 9186 or email jcollins@tworld.com');
+  });
+}
+
+document.getElementById('j_turnover').addEventListener('input',function(){document.getElementById('j_tvout').textContent='\u20ac'+Math.round(this.value/1000)+'k';});
+document.getElementById('j_profit').addEventListener('input',function(){document.getElementById('j_prout').textContent='\u20ac'+Math.round(this.value/1000)+'k';});
+document.getElementById('j_years').addEventListener('input',function(){document.getElementById('j_yrout').textContent=this.value+' year'+(this.value==1?'':'s');});
+</script>
