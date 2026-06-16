@@ -74,6 +74,7 @@
 .jcvt-warn-banner{background:#FFF3F3;border:1px solid #E8AAAA;border-radius:9px;padding:.875rem 1rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:9px}
 .jcvt-warn-banner svg{flex-shrink:0;color:#c0392b;margin-top:1px}
 .jcvt-warn-banner p{font-size:12px;color:#7a1a1a;line-height:1.55;font-weight:600;letter-spacing:.01em}
+.jcvt-conf{text-align:center;padding:1rem 0 .5rem}
 .jcvt-cicon{width:54px;height:54px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#0F6E56}
 .jcvt-conf h2{font-size:20px;font-weight:600;color:#111;margin-bottom:6px}
 .jcvt-conf p{font-size:14px;color:#666;line-height:1.55;margin-bottom:1.25rem}
@@ -113,6 +114,7 @@
       <option value="manufacturing">Manufacturing &amp; wholesale</option>
       <option value="transport">Transport &amp; logistics</option>
       <option value="childcare">Childcare &amp; education</option>
+      <option value="beauty">Hair, beauty &amp; wellness</option>
       <option value="other">Other service business</option>
     </select>
     <label class="jcvt-fl" for="j_turnover">Annual turnover (&euro;)</label>
@@ -182,7 +184,6 @@
   <!-- Step 4 — Results -->
   <div id="js4" class="jcvt-card" style="display:none">
     <p class="jcvt-slbl">Your indicative valuation</p>
-
     <div class="jcvt-warn-banner">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       <p>UNVERIFIED INDICATIVE ESTIMATE ONLY &mdash; NOT AN OFFICIAL VALUATION REPORT. Based on self-reported unaudited inputs. Cannot be used to secure finance, support legal proceedings, or finalise a business sale.</p>
@@ -202,16 +203,20 @@
 
     <div class="jcvt-bstrip">
       <div class="jcvt-bicon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </div>
       <div class="jcvt-bbody">
         <h3>Want a more accurate confidential view?</h3>
         <p>Book an appointment with us and we can give you a confidential preliminary broker opinion before deciding any of your next business exit moves.</p>
         <div class="jcvt-bacts">
-          <button class="jcvt-bbtn" onclick="jcvt_toggleform()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book an appointment
-          </button>
+          <a href="https://www.jcbizsales.ie/contact-us" target="_blank" rel="noopener" class="jcvt-bbtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Get in touch
+          </a>
+          <a href="mailto:jcollins@tworld.com?subject=Business%20Valuation%20Enquiry" class="jcvt-cbtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email James
+          </a>
           <a href="tel:+353879879186" class="jcvt-cbtn">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             Call 087 987 9186
@@ -220,51 +225,15 @@
       </div>
     </div>
 
-    <div class="jcvt-bform" id="j_bform" style="display:none">
-      <p class="jcvt-bftitle">Your details — we'll confirm a time that suits you</p>
-      <label class="jcvt-fl first" for="j_name">Your name</label>
-      <input type="text" id="j_name" placeholder="e.g. Se&aacute;n Murphy" autocomplete="name">
-      <label class="jcvt-fl" for="j_email">Email address</label>
-      <input type="email" id="j_email" placeholder="sean@yourbusiness.ie" autocomplete="email">
-      <label class="jcvt-fl" for="j_phone">Phone number</label>
-      <input type="tel" id="j_phone" placeholder="087 xxx xxxx" autocomplete="tel">
-      <label class="jcvt-fl" for="j_time">Preferred time to meet</label>
-      <select id="j_time">
-        <option value="">— select preference —</option>
-        <option value="morning">Morning (9am–12pm)</option>
-        <option value="afternoon">Afternoon (12pm–5pm)</option>
-        <option value="flexible">Flexible — anytime suits</option>
-        <option value="virtual">Virtual / phone call preferred</option>
-      </select>
-      <button class="jcvt-btn" id="j_submitbtn" onclick="jcvt_submit()">Request appointment &rarr;</button>
-      <p class="jcvt-disc">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        100% confidential. No obligation. We never share your details.
-      </p>
-    </div>
-
     <button class="jcvt-btn2" onclick="jcvt_to(1)">&larr; Start again</button>
   </div>
 
-  <!-- Step 5 — Confirmation -->
-  <div id="js5" class="jcvt-card" style="display:none">
-    <div class="jcvt-conf">
-      <div class="jcvt-cicon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h2>Thanks, <span id="j_confname">there</span>.</h2>
-      <p>James will be in touch shortly to confirm your appointment — free, confidential, and no obligation.</p>
-      <div class="jcvt-mc" style="margin-bottom:1.375rem"><div class="jcvt-mlbl">Your indicative range</div><div class="jcvt-mval g" id="j_confrange">—</div></div>
-      <p>Read the <a href="https://www.jcbizsales.ie/selling-a-business-faq" target="_blank" rel="noopener">Selling a Business FAQ</a> or call James on <a href="tel:+353879879186">087 987 9186</a>.</p>
-      <p class="jcvt-fp">UNVERIFIED INDICATIVE ESTIMATE ONLY &mdash; NOT AN OFFICIAL VALUATION REPORT. This simulation is based on self-reported unaudited inputs and does not constitute financial advice, a certified valuation, or a formal broker opinion. It cannot be used to secure loans, support legal proceedings, or finalise a business sale under Irish law. A qualified broker assessment is required for all such purposes.</p>
-    </div>
-  </div>
 
 </div>
 </div>
 
 <script>
-var jcvt_sectors={trades:2.8,retail:2.0,food:1.7,professional:3.2,healthcare:3.6,tech:4.5,manufacturing:3.0,transport:2.4,childcare:3.8,other:2.6};
+var jcvt_sectors={trades:2.2,retail:1.8,food:1.5,professional:3.0,healthcare:3.2,tech:4.0,manufacturing:2.8,transport:2.2,childcare:3.0,beauty:1.5,other:2.2};
 var jcvt_data={};
 
 function jcvt_fmt(v){
@@ -298,18 +267,10 @@ function jcvt_to(n){
   jcvt_showstep(n);
 }
 
-function jcvt_toggleform(){
-  var f=document.getElementById('j_bform');
-  f.style.display=(f.style.display==='none')?'block':'none';
-  if(f.style.display==='block') document.getElementById('j_name').focus();
-}
 
-function jcvt_toggleagreebtn(){
-  var cb=document.getElementById('j_agree');
-  var btn=document.getElementById('j_showbtn');
-  if(cb.checked){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';}
-  else{btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
-}
+document.getElementById('j_turnover').addEventListener('input',function(){document.getElementById('j_tvout').textContent='\u20ac'+Math.round(this.value/1000)+'k';});
+document.getElementById('j_profit').addEventListener('input',function(){document.getElementById('j_prout').textContent='\u20ac'+Math.round(this.value/1000)+'k';});
+document.getElementById('j_years').addEventListener('input',function(){document.getElementById('j_yrout').textContent=this.value+' year'+(this.value==1?'':'s');});
 
 function jcvt_calc(){
   var sector=document.getElementById('j_sector').value||'other';
@@ -321,19 +282,20 @@ function jcvt_calc(){
   var accounts=document.getElementById('j_accounts').value;
   var lease=document.getElementById('j_lease').value;
   var years=parseInt(document.getElementById('j_years').value);
-  var mult=jcvt_sectors[sector]||2.6;
+  var mult=jcvt_sectors[sector]||2.2;
   var adj=0;
-  if(growth==='strong') adj+=0.5; else if(growth==='steady') adj+=0.2; else if(growth==='decline') adj-=0.5;
-  if(owner==='low') adj+=0.4; else if(owner==='mid') adj+=0.1; else if(owner==='high') adj-=0.3; else if(owner==='critical') adj-=0.65;
-  if(recurring==='contracted') adj+=0.4; else if(recurring==='repeat') adj+=0.2; else if(recurring==='oneoff') adj-=0.25;
-  if(accounts==='clean') adj+=0.15; else if(accounts==='mixed') adj-=0.2; else if(accounts==='poor') adj-=0.4;
-  if(lease==='own') adj+=0.2; else if(lease==='long') adj+=0.1; else if(lease==='short') adj-=0.35;
-  if(years>=15) adj+=0.2; else if(years>=8) adj+=0.1; else if(years<3) adj-=0.15;
-  var fm=Math.max(1.0,mult+adj);
+  if(growth==='strong') adj+=0.4; else if(growth==='steady') adj+=0.15; else if(growth==='decline') adj-=0.5;
+  if(owner==='low') adj+=0.3; else if(owner==='mid') adj+=0.05; else if(owner==='high') adj-=0.4; else if(owner==='critical') adj-=0.75;
+  if(recurring==='contracted') adj+=0.3; else if(recurring==='repeat') adj+=0.15; else if(recurring==='oneoff') adj-=0.3;
+  if(accounts==='clean') adj+=0.1; else if(accounts==='mixed') adj-=0.2; else if(accounts==='poor') adj-=0.45;
+  if(lease==='own') adj+=0.15; else if(lease==='long') adj+=0.05; else if(lease==='short') adj-=0.4;
+  if(years>=15) adj+=0.15; else if(years>=8) adj+=0.05; else if(years<3) adj-=0.2;
+  var fm=Math.max(0.8,mult+adj);
   var margin=profit/turnover;
   var mid=profit*fm;
-  var low=mid*(margin<0.12?0.68:0.72);
-  var high=mid*(growth==='strong'?1.35:1.22);
+  var lowFactor=margin<0.10?0.62:margin<0.15?0.68:0.72;
+  var low=mid*lowFactor;
+  var high=mid*(growth==='strong'?1.25:1.15);
   jcvt_data={mult:fm,mid:mid,low:low,high:high,profit:profit,turnover:turnover,growth:growth,owner:owner,recurring:recurring,accounts:accounts,lease:lease,years:years,sector:sector,margin:margin};
 }
 
@@ -385,68 +347,11 @@ function jcvt_showresults(){
   jcvt_showstep(4);
 }
 
-function jcvt_submit(){
-  var name=document.getElementById('j_name').value.trim();
-  var email=document.getElementById('j_email').value.trim();
-  var phone=document.getElementById('j_phone').value.trim();
-  var time=document.getElementById('j_time').value;
-  if(!name){document.getElementById('j_name').focus();return;}
-  if(!email||email.indexOf('@')<0){document.getElementById('j_email').focus();return;}
-  if(!phone){document.getElementById('j_phone').focus();return;}
-  var d=jcvt_data;
-  var low5=Math.round((d.low||0)/5000)*5000;
-  var high5=Math.round((d.high||0)/5000)*5000;
-  var mid5=Math.round((d.mid||0)/5000)*5000;
-  var tl={morning:'Morning (9am\u201312pm)',afternoon:'Afternoon (12pm\u20135pm)',flexible:'Flexible \u2014 anytime suits',virtual:'Virtual / phone call preferred'};
-  var sl={trades:'Trades & construction',retail:'Retail',food:'Food & hospitality',professional:'Professional services',healthcare:'Healthcare & wellbeing',tech:'Technology & software',manufacturing:'Manufacturing & wholesale',transport:'Transport & logistics',childcare:'Childcare & education',other:'Other service business'};
-  var gl={strong:'Growing strongly (10%+ p/a)',steady:'Growing steadily (up to 10%)',flat:'Broadly flat',decline:'Declining'};
-  var ol={low:'Low \u2014 runs without owner',mid:'Moderate \u2014 owner in key decisions',high:'High \u2014 owner central to operations',critical:'Critical \u2014 built around owner personally'};
-  var rl={contracted:'Contracted / subscription',repeat:'Strong repeat customer base',mix:'Mix of repeat & new',oneoff:'Mainly once-off / project work'};
-  var al={clean:'Clean professional accounts',ok:'In order, not always audited',mixed:'Mixed personal/business expenses',poor:'Basic records only'};
-  var ll={own:'Business owns property',long:'Long lease (5+ years)',short:'Short lease (under 5 years)',none:'No fixed premises',na:'Not applicable'};
-  var btn=document.getElementById('j_submitbtn');
-  btn.disabled=true;
-  btn.textContent='Sending\u2026';
-  fetch('https://formspree.io/f/mkoaykly',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      _subject:'[New Lead] Valuation request from '+name+' \u2014 '+jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5),
-      _replyto:email,
-      name:name,
-      email:email,
-      phone:phone,
-      preferred_time:tl[time]||time,
-      valuation_range:jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5),
-      mid_point:jcvt_fmt(mid5),
-      profit_multiple:d.mult?d.mult.toFixed(1)+'x':'--',
-      sector:sl[d.sector]||d.sector,
-      annual_turnover:d.turnover?jcvt_fmt(d.turnover):'--',
-      adjusted_profit:d.profit?jcvt_fmt(d.profit):'--',
-      growth_trend:gl[d.growth]||d.growth,
-      owner_dependency:ol[d.owner]||d.owner,
-      revenue_base:rl[d.recurring]||d.recurring,
-      accounts_quality:al[d.accounts]||d.accounts,
-      lease_situation:ll[d.lease]||d.lease,
-      years_trading:d.years||'--'
-    })
-  })
-  .then(function(res){
-    if(res.ok){
-      document.getElementById('j_confname').textContent=name.split(' ')[0];
-      document.getElementById('j_confrange').textContent=jcvt_fmt(low5)+' \u2013 '+jcvt_fmt(high5);
-      jcvt_showstep(5);
-    } else {
-      btn.disabled=false;
-      btn.textContent='Request appointment \u2192';
-      alert('Something went wrong \u2014 please call James on 087 987 9186 or email jcollins@tworld.com');
-    }
-  })
-  .catch(function(){
-    btn.disabled=false;
-    btn.textContent='Request appointment \u2192';
-    alert('Could not send \u2014 please call James on 087 987 9186 or email jcollins@tworld.com');
-  });
+function jcvt_toggleagreebtn(){
+  var cb=document.getElementById('j_agree');
+  var btn=document.getElementById('j_showbtn');
+  if(cb.checked){btn.disabled=false;btn.style.opacity='1';btn.style.cursor='pointer';}
+  else{btn.disabled=true;btn.style.opacity='.45';btn.style.cursor='not-allowed';}
 }
 
 document.getElementById('j_turnover').addEventListener('input',function(){document.getElementById('j_tvout').textContent='\u20ac'+Math.round(this.value/1000)+'k';});
